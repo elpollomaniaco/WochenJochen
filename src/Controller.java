@@ -4,9 +4,10 @@ public class Controller {
     private TuioClient client;
     private Listener listener;
     private long lastRefresh = 0;
-    private final int refreshRate = 5;
+    private final int refreshRate;
 
-    public Controller(int port) {
+    public Controller(int port, int refreshRate) {
+        this.refreshRate = refreshRate;
         this.listener = new Listener(this);
 
         this.client = new TuioClient(port);
