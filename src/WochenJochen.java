@@ -16,7 +16,6 @@ public class WochenJochen {
             }
         }
 
-        System.out.println(port);
         controller = new Controller(port);
     }
 }
