@@ -3,6 +3,8 @@ import TUIO.TuioClient;
 public class Controller {
     private TuioClient client;
     private Listener listener;
+    private long lastRefresh = 0;
+    private final int refreshRate = 5;
 
     public Controller(int port) {
         this.listener = new Listener(this);
@@ -24,7 +26,9 @@ public class Controller {
     }
 
     public void refreshView(long seconds) {
-        System.out.println("Refresh event");
+        if (seconds > lastRefresh && seconds % refreshRate == 0) {
+            System.out.println("Refresh event");
+        }
     }
 
 }
