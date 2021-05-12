@@ -27,8 +27,9 @@ public class Controller {
     }
 
     public void refreshView(long seconds) {
-        if (seconds > lastRefresh && seconds % refreshRate == 0) {
+        if (seconds > this.lastRefresh && seconds % this.refreshRate == 0) {
             System.out.println("Refresh event");
+            this.lastRefresh += this.refreshRate;
         }
     }
 
