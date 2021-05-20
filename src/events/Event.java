@@ -16,4 +16,8 @@ public class Event {
     public boolean hasID(int id) {
         return id == this.ID;
     }
+
+    public String getName() {
+        return this.CATEGORY.getLabel();
+    }
 }
