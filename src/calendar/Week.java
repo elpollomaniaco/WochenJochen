@@ -1,5 +1,8 @@
 package calendar;
 
+import events.Event;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
 public class Week {
@@ -31,17 +34,35 @@ public class Week {
         }
     }
 
-    public TimeSlot[] getDay(int dayNumber) {
-        dayNumber = dayNumber % DAY_COUNT;
-        return Arrays.copyOfRange(this.TIME_SLOTS, dayNumber * this.SLOT_COUNT, (dayNumber + 1) * this.SLOT_COUNT);
+    public TimeSlot[] getDay(@NotNull Days day) {
+        return this.getDay(day.ordinal());
     }
 
-    public TimeSlot[] getDay(Days day) {
-        return this.getDay(day.ordinal());
+    private TimeSlot[] getDay(int dayNumber) {
+        dayNumber = dayNumber % DAY_COUNT;
+        return Arrays.copyOfRange(this.TIME_SLOTS, dayNumber * this.SLOT_COUNT, (dayNumber + 1) * this.SLOT_COUNT);
     }
 
     public String getTime(int slotNumber) {
         float time = this.START_TIME + slotNumber * this.DELTA_TIME;
         return String.format("%02d:%02d", (int) time, (int) ((time % 1) * 60));
+    }
+
+    public void addEvent(Event event,@NotNull Days day, int timeSlot) {
+        this.addEvent(event, day.ordinal(), timeSlot);
+    }
+
+    public void addEvent(Event event, int dayNumber, int timeSlot) {
+        int index = dayNumber * this.SLOT_COUNT + timeSlot;
+        this.TIME_SLOTS[index].setEvent(event);
+    }
+
+    public void removeEvent(@NotNull Days day, int timeSlot) {
+        this.removeEvent(day.ordinal(), timeSlot);
+    }
+
+    public void removeEvent(int dayNumber, int timeSlot) {
+        int index = dayNumber * this.SLOT_COUNT + timeSlot;
+        this.TIME_SLOTS[index].deleteEvent();
     }
 }
