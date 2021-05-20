@@ -4,10 +4,10 @@ public class Controller {
     private TuioClient client;
     private Listener listener;
     private long lastRefresh = 0;
-    private final int refreshRate;
+    private final int REFRESH_RATE;
 
     public Controller(int port, int refreshRate) {
-        this.refreshRate = refreshRate;
+        this.REFRESH_RATE = refreshRate;
         this.listener = new Listener(this);
 
         this.client = new TuioClient(port);
@@ -27,9 +27,9 @@ public class Controller {
     }
 
     public void refreshView(long seconds) {
-        if (seconds > this.lastRefresh && seconds % this.refreshRate == 0) {
+        if (seconds > this.lastRefresh && seconds % this.REFRESH_RATE == 0) {
             System.out.println("Refresh event");
-            this.lastRefresh += this.refreshRate;
+            this.lastRefresh += this.REFRESH_RATE;
         }
     }
 
