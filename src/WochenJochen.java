@@ -50,6 +50,6 @@ public class WochenJochen {
                 "----------------------------%n",
                 port, refreshRate, dayCount, slotCount, (int) startTime, (int) (startTime % 1 * 60), (int) endTime, (int) (endTime % 1 * 60));
 
-        controller = new Controller(port, refreshRate);
+        controller = new Controller(port, refreshRate, dayCount, slotCount, startTime, endTime);
     }
 }

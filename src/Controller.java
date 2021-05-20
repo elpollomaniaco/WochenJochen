@@ -1,4 +1,5 @@
 import TUIO.TuioClient;
+import calendar.Week;
 
 public class Controller {
     private TuioClient client;
@@ -6,13 +7,17 @@ public class Controller {
     private long lastRefresh = 0;
     private final int REFRESH_RATE;
 
-    public Controller(int port, int refreshRate) {
+    private Week week;
+
+    public Controller(int port, int refreshRate, int dayCount, int slotCount, float startTime, float endTime) {
         this.REFRESH_RATE = refreshRate;
         this.listener = new Listener(this);
 
         this.client = new TuioClient(port);
         this.client.addTuioListener(this.listener);
         this.client.connect();
+
+        this.week = new Week(dayCount, slotCount, startTime, endTime);
     }
 
     public void addEvent(int id, float x, float y) {
