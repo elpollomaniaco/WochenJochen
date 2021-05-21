@@ -1,5 +1,6 @@
 import TUIO.TuioClient;
 import calendar.Week;
+import events.Event;
 
 public class Controller {
     private TuioClient client;
@@ -21,7 +22,10 @@ public class Controller {
     }
 
     public void addEvent(int id, float x, float y) {
-        System.out.println("Add event");
+        Event event = new Event(id);
+        int day = (int)(this.week.getDayCount() * x);
+        int timeSlot = (int)(this.week.getSlotCount() * y);
+        this.week.addEvent(event, day, timeSlot);
     }
 
     public void updateEvent(int id, float x, float y) {

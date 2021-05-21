@@ -65,4 +65,12 @@ public class Week {
         int index = dayNumber * this.SLOT_COUNT + timeSlot;
         this.TIME_SLOTS[index].deleteEvent();
     }
+
+    public int getDayCount() {
+        return this.DAY_COUNT;
+    }
+
+    public int getSlotCount() {
+        return this.SLOT_COUNT;
+    }
 }
