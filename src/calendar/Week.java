@@ -72,7 +72,7 @@ public class Week {
 
     public void removeEvent(int eventID) {
         for (TimeSlot time_slot : this.TIME_SLOTS) {
-            if (time_slot.getEvent().hasID(eventID)) {
+            if (time_slot.hasEventWithID(eventID)) {
                 time_slot.deleteEvent();
                 return;
             }

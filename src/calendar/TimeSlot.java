@@ -13,8 +13,8 @@ public class TimeSlot {
         this.event = event;
     }
 
-    public Event getEvent() {
-        return this.event;
+    public boolean hasEventWithID(int eventID) {
+        return ((this.event != null) && (this.event.hasID(eventID))) ;
     }
 
     public void deleteEvent() {
