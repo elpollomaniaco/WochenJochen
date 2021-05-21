@@ -33,6 +33,7 @@ public class Controller {
     }
 
     public void removeEvent(int id) {
+        this.week.removeEvent(id);
     }
 
     public void refreshView(long seconds) {

@@ -70,6 +70,15 @@ public class Week {
         this.TIME_SLOTS[index].deleteEvent();
     }
 
+    public void removeEvent(int eventID) {
+        for (TimeSlot time_slot : this.TIME_SLOTS) {
+            if (time_slot.getEvent().hasID(eventID)) {
+                time_slot.deleteEvent();
+                return;
+            }
+        }
+    }
+
     public int getDayCount() {
         return this.DAY_COUNT;
     }

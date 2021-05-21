@@ -13,6 +13,10 @@ public class TimeSlot {
         this.event = event;
     }
 
+    public Event getEvent() {
+        return this.event;
+    }
+
     public void deleteEvent() {
         this.event = null;
     }
