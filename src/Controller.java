@@ -1,5 +1,6 @@
 import TUIO.TuioClient;
 import calendar.Week;
+import events.CategoryDB;
 import events.Event;
 
 public class Controller {
@@ -29,15 +30,14 @@ public class Controller {
     }
 
     public void updateEvent(int id, float x, float y) {
-        System.out.println("Update event");
     }
+
     public void removeEvent(int id) {
-        System.out.println("Remove event");
     }
 
     public void refreshView(long seconds) {
         if (seconds > this.lastRefresh && seconds % this.REFRESH_RATE == 0) {
-            System.out.println("Refresh event");
+            WochenJochen.printCalendar(this.week);
             this.lastRefresh += this.REFRESH_RATE;
         }
     }
