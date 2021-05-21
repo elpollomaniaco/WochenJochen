@@ -30,6 +30,8 @@ public class Controller {
     }
 
     public void updateEvent(int id, float x, float y) {
+        this.removeEvent(id);
+        this.addEvent(id, x, y);
     }
 
     public void removeEvent(int id) {
