@@ -38,9 +38,13 @@ public class Week {
         return this.getDay(day.ordinal());
     }
 
-    private TimeSlot[] getDay(int dayNumber) {
+    public TimeSlot[] getDay(int dayNumber) {
         dayNumber = dayNumber % DAY_COUNT;
         return Arrays.copyOfRange(this.TIME_SLOTS, dayNumber * this.SLOT_COUNT, (dayNumber + 1) * this.SLOT_COUNT);
+    }
+
+    public String getDayName(int dayNumber) {
+        return Days.values()[dayNumber].toString();
     }
 
     public String getTime(int slotNumber) {
