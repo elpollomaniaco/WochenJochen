@@ -1,10 +1,13 @@
+import calendar.TimeSlot;
+import calendar.Week;
+
 public class WochenJochen {
     private static Controller controller;
 
     public static void main(String[] args) {
         // default values
         int port = 3333;
-        int refreshRate = 3;
+        int refreshRate = 10;
         int dayCount = 7;
         int slotCount = 6;
         float startTime = 8;
@@ -51,5 +54,19 @@ public class WochenJochen {
                 port, refreshRate, dayCount, slotCount, (int) startTime, (int) (startTime % 1 * 60), (int) endTime, (int) (endTime % 1 * 60));
 
         controller = new Controller(port, refreshRate, dayCount, slotCount, startTime, endTime);
+    }
+
+    public static void printCalendar(Week week) {
+        for(int i = 0; i < week.getDayCount(); i++) {
+            System.out.println(week.getDayName(i).toUpperCase());
+            System.out.println("---------------------");
+
+            TimeSlot[] day = week.getDay(i);
+            for(int j = 0; j < day.length; j++) {
+                System.out.printf("%s\t%s%n", week.getTime(j), day[j].getEventName());
+            }
+
+            System.out.println("---------------------");
+        }
     }
 }
