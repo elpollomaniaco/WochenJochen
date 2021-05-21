@@ -1,6 +1,6 @@
 package events;
 
-public class CategoryDB {
+public final class CategoryDB {
     private static Category[] categories;
 
     public CategoryDB() {
