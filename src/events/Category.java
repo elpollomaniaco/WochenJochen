@@ -13,7 +13,7 @@ public class Category {
         return this.ID;
     }
 
-    public String getLabel() {
+    String getLabel() {
       return this.LABEL;
     }
 }

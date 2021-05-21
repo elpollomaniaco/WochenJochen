@@ -1,4 +1,7 @@
 import TUIO.TuioClient;
+import calendar.Week;
+import events.CategoryDB;
+import events.Event;
 
 public class Controller {
     private TuioClient client;
@@ -6,29 +9,38 @@ public class Controller {
     private long lastRefresh = 0;
     private final int REFRESH_RATE;
 
-    public Controller(int port, int refreshRate) {
+    private Week week;
+
+    public Controller(int port, int refreshRate, int dayCount, int slotCount, float startTime, float endTime) {
         this.REFRESH_RATE = refreshRate;
         this.listener = new Listener(this);
 
         this.client = new TuioClient(port);
         this.client.addTuioListener(this.listener);
         this.client.connect();
+
+        this.week = new Week(dayCount, slotCount, startTime, endTime);
     }
 
     public void addEvent(int id, float x, float y) {
-        System.out.println("Add event");
+        Event event = new Event(id);
+        int day = (int)(this.week.getDayCount() * x);
+        int timeSlot = (int)(this.week.getSlotCount() * y);
+        this.week.addEvent(event, day, timeSlot);
     }
 
     public void updateEvent(int id, float x, float y) {
-        System.out.println("Update event");
+        this.removeEvent(id);
+        this.addEvent(id, x, y);
     }
+
     public void removeEvent(int id) {
-        System.out.println("Remove event");
+        this.week.removeEvent(id);
     }
 
     public void refreshView(long seconds) {
         if (seconds > this.lastRefresh && seconds % this.REFRESH_RATE == 0) {
-            System.out.println("Refresh event");
+            WochenJochen.printCalendar(this.week);
             this.lastRefresh += this.REFRESH_RATE;
         }
     }
