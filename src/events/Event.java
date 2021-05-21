@@ -18,6 +18,6 @@ public class Event {
     }
 
     public String getName() {
-        return this.CATEGORY.getLabel();
+        return (this.CATEGORY != null ? this.CATEGORY.getLabel() : "No Category assigned");
     }
 }
