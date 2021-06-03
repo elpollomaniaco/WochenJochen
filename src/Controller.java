@@ -14,7 +14,7 @@ public class Controller {
     private Week week;
 
     public Controller(int port, int refreshRate, int dayCount, int slotCount, float startTime, float endTime) {
-        drawer = new Drawer("WochenJochen", 1100, 700, dayCount, slotCount);
+        drawer = new Drawer("WochenJochen", 1100, 770, dayCount, slotCount);
         this.REFRESH_RATE = refreshRate;
         this.listener = new Listener(this);
 

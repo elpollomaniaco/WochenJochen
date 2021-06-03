@@ -12,6 +12,7 @@ public class Panel extends JPanel {
         this.y = y;
         this.dayCount = dayCount;
         this.slotCount = slotCount;
+        setSize(x, y);
     }
     @Override
     public void paintComponent(Graphics g) {
@@ -26,22 +27,26 @@ public class Panel extends JPanel {
             float deltaX = (float)x / (dayCount + 1);  // rounded badly
             float deltaY = (float)y / (slotCount + 1);
 
-            float curX = baseX;
-            float curY = 0;
+            float curX = baseX + 0.5f * deltaX;
+            float curY;
+
+            g2d.setColor(Color.red);
+
             for (int i = 0; i < dayCount; i++) {
-                g2d.drawLine((int)curX, 0, (int)curX, y);
-                curX = curX + deltaX;
+                curY = 1.5f * deltaY;
+                for (int j = 0; j < slotCount; j++) {
+                    g2d.drawRect((int)curX, (int)curY, 10, 10);
+                    curY += deltaY;
+                }
+                curX += deltaX;
             }
 
-            for (int j = 0; j < slotCount; j++) {
-                curY = curY + deltaY;
-                g2d.drawLine(0, (int)curY, x, (int)curY);
-            }
 
-            g2d.drawLine(0,0,0,y);
-            g2d.drawLine(0,0,x,0);
-            g2d.drawLine(x,0,x,y);
-            g2d.drawLine(0,y,x,y);
+
+            //g2d.drawLine(0,0,0,y);
+            //g2d.drawLine(0,0,x,0);
+            //g2d.drawLine(x,0,x,y);
+            //g2d.drawLine(0,y,x,y);
 
         }
     }
