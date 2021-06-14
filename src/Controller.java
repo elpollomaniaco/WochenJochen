@@ -1,5 +1,7 @@
 import TUIO.TuioClient;
+import calendar.TimeSlot;
 import calendar.Week;
+import events.Category;
 import events.CategoryDB;
 import events.Event;
 
@@ -24,6 +26,16 @@ public class Controller {
 
     public void addEvent(int id, float x, float y) {
         Event event = new Event(id);
+        this.createEvent(event, x, y);
+    }
+
+    public void addEvent(int id, Category cat, float x, float y) {
+        Event event = new Event(id, cat);
+        this.createEvent(event, x, y);
+    }
+
+
+    private void createEvent(Event event, float x, float y) {
         int day = (int)(this.week.getDayCount() * x);
         int timeSlot = (int)(this.week.getSlotCount() * y);
         this.week.addEvent(event, day, timeSlot);
@@ -44,5 +56,4 @@ public class Controller {
             this.lastRefresh += this.REFRESH_RATE;
         }
     }
-
 }
