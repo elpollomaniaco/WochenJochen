@@ -9,6 +9,11 @@ public class Event {
         this.CATEGORY = this.getCategoryFromID(id);
     }
 
+    public Event(int id, Category cat) {
+        this.ID = id;
+        this.CATEGORY = cat;
+    }
+
     private Category getCategoryFromID(int id) {
         return CategoryDB.hashEventID(id);
     }
