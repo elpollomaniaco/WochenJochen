@@ -1,5 +1,7 @@
 package events;
 
+import java.awt.image.BufferedImage;
+
 public class Event {
     private final int ID;
     private final Category CATEGORY;
@@ -19,5 +21,9 @@ public class Event {
 
     public String getName() {
         return (this.CATEGORY != null ? this.CATEGORY.getLabel() : "No Category assigned");
+    }
+
+    public BufferedImage getImage() {
+        return this.CATEGORY.getImage();
     }
 }

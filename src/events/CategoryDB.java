@@ -2,9 +2,9 @@ package events;
 
 public final class CategoryDB {
     private static Category[] categories = new Category[]{
-            new Category(0, "Doctor"),
-            new Category(1, "Cinema"),
-            new Category(2, "School"),
+            new Category(0, "Doctor", "img/cat_doctor.png"),
+            new Category(1, "Cinema", "img/cat_friends.png"),
+            new Category(2, "Dinner", "img/cat_food.png"),
     };
 
     static Category getCategory(int id) {
