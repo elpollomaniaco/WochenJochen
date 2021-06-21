@@ -4,16 +4,19 @@ import calendar.Week;
 import events.Category;
 import events.CategoryDB;
 import events.Event;
+import graphics.Drawer;
 
 public class Controller {
     private TuioClient client;
     private Listener listener;
+    private Drawer drawer;
     private long lastRefresh = 0;
     private final int REFRESH_RATE;
 
     private Week week;
 
     public Controller(int port, int refreshRate, int dayCount, int slotCount, float startTime, float endTime) {
+        drawer = new Drawer("WochenJochen", 1100, 770, dayCount, slotCount);
         this.REFRESH_RATE = refreshRate;
         this.listener = new Listener(this);
 
@@ -52,7 +55,7 @@ public class Controller {
 
     public void refreshView(long seconds) {
         if (seconds > this.lastRefresh && seconds % this.REFRESH_RATE == 0) {
-            WochenJochen.printCalendar(this.week);
+            drawer.refreshDrawing();
             this.lastRefresh += this.REFRESH_RATE;
         }
     }
