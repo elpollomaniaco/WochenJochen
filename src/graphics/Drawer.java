@@ -1,6 +1,7 @@
 package graphics;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Drawer {
     private Panel panel;
@@ -19,6 +20,10 @@ public class Drawer {
 
     public void refreshDrawing() {
         panel.refresh();
+    }
+
+    public void addImage(BufferedImage img, int day, int timeSlot) {
+        this.panel.addImage(img, day, timeSlot);
     }
 
 
