@@ -1,7 +1,6 @@
 package calendar;
 
 import events.Event;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -34,7 +33,7 @@ public class Week {
         }
     }
 
-    public TimeSlot[] getDay(@NotNull Days day) {
+    public TimeSlot[] getDay(Days day) {
         return this.getDay(day.ordinal());
     }
 
@@ -52,7 +51,7 @@ public class Week {
         return String.format("%02d:%02d", (int) time, (int) ((time % 1) * 60));
     }
 
-    public void addEvent(Event event,@NotNull Days day, int timeSlot) {
+    public void addEvent(Event event,Days day, int timeSlot) {
         this.addEvent(event, day.ordinal(), timeSlot);
     }
 
@@ -61,7 +60,7 @@ public class Week {
         this.TIME_SLOTS[index].setEvent(event);
     }
 
-    public void removeEvent(@NotNull Days day, int timeSlot) {
+    public void removeEvent(Days day, int timeSlot) {
         this.removeEvent(day.ordinal(), timeSlot);
     }
 
