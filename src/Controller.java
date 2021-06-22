@@ -59,4 +59,8 @@ public class Controller {
             this.lastRefresh += this.REFRESH_RATE;
         }
     }
+
+    public Week getWeek() {
+        return this.week;
+    }
 }

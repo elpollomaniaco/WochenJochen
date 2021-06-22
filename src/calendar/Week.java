@@ -78,6 +78,16 @@ public class Week {
         }
     }
 
+    public void printWeek(){
+        Days days[] = {Days.Monday, Days.Tuesday, Days.Wednesday, Days.Thursday, Days.Friday, Days.Saturday, Days.Sunday};
+        for (int d = 0; d < DAY_COUNT; d++){
+            System.out.println(days[d].name() + ":");
+            for (int s = 0; s < SLOT_COUNT; s++){
+            System.out.println((int)(START_TIME + DELTA_TIME * s) + " Uhr");
+            }
+        }
+    }
+
     public int getDayCount() {
         return this.DAY_COUNT;
     }

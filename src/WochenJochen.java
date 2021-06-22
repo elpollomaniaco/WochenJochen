@@ -3,6 +3,7 @@ import calendar.Week;
 
 public class WochenJochen {
     private static Controller controller;
+    private static MockServer mockServer;
 
     public static void main(String[] args) {
         // default values
@@ -54,5 +55,6 @@ public class WochenJochen {
                 port, refreshRate, dayCount, slotCount, (int) startTime, (int) (startTime % 1 * 60), (int) endTime, (int) (endTime % 1 * 60));
 
         controller = new Controller(port, refreshRate, dayCount, slotCount, startTime, endTime);
+        mockServer = new MockServer(controller);
     }
 }
