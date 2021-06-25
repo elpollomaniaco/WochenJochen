@@ -37,6 +37,16 @@ public class MockServer {
     private void addEvent() {
         System.out.println("Adding a random Event to the Week...");
 
+        //Make a Random EventID
+        Random r = new Random();
+        int id = r.nextInt(600) + 400;
+
+        //Search a free spot
+        Week week = controller.getWeek();
+        int spot = week.freeSpot();
+        controller.addEventBySpotnumber(id, spot);
+
+
     }
     //SHOW - Gets the Week from the controller and starts a print
     private void showWeek() {

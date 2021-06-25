@@ -20,4 +20,6 @@ public class TimeSlot {
     public void deleteEvent() {
         this.event = null;
     }
+
+    public boolean hasEvent() {return (this.event != null);}
 }

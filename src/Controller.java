@@ -37,6 +37,10 @@ public class Controller {
         this.createEvent(event, x, y);
     }
 
+    public void addEventBySpotnumber(int id, int spot){
+        Event event = new Event(id);
+        this.week.addEventBySlotnumber(event, spot);
+    }
 
     private void createEvent(Event event, float x, float y) {
         int day = (int)(this.week.getDayCount() * x);

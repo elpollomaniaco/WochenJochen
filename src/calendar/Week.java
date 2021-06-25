@@ -2,7 +2,7 @@ package calendar;
 
 import events.Event;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Week {
     public enum Days {
@@ -60,6 +60,10 @@ public class Week {
         this.TIME_SLOTS[index].setEvent(event);
     }
 
+    public void addEventBySlotnumber(Event event, int slotnumber){
+        this.TIME_SLOTS[slotnumber].setEvent(event);
+    }
+
     public void removeEvent(Days day, int timeSlot) {
         this.removeEvent(day.ordinal(), timeSlot);
     }
@@ -80,12 +84,28 @@ public class Week {
 
     public void printWeek(){
         Days days[] = {Days.Monday, Days.Tuesday, Days.Wednesday, Days.Thursday, Days.Friday, Days.Saturday, Days.Sunday};
-        for (int d = 0; d < DAY_COUNT; d++){
+        for (int d = 0; d < this.DAY_COUNT; d++){
             System.out.println(days[d].name() + ":");
-            for (int s = 0; s < SLOT_COUNT; s++){
-            System.out.println((int)(START_TIME + DELTA_TIME * s) + " Uhr");
+            for (int s = 0; s < this.SLOT_COUNT; s++){
+                //Print Time
+                System.out.print((int)(this.START_TIME + this.DELTA_TIME * s) + " Uhr    ");
+                //Print Event
+                int index = d * this.SLOT_COUNT + s;    //Get Index
+                TimeSlot t = this.TIME_SLOTS[index];    //Get Slot
+                String output = t.getEventName();       //Get String
+                if (output.equals("XXX")) {output = "";}
+                System.out.println(output);   //Print Name
             }
         }
+    }
+
+    public int freeSpot(){
+        Random r = new Random();
+        int check = r.nextInt(TIME_SLOTS.length);
+        while (TIME_SLOTS[check].hasEvent()){
+            check = r.nextInt(TIME_SLOTS.length);
+        }
+        return check;
     }
 
     public int getDayCount() {
