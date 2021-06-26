@@ -57,7 +57,7 @@ public class Week {
 
     public void addEvent(Event event, int dayNumber, int timeSlot) {
         int index = dayNumber * this.SLOT_COUNT + timeSlot;
-        this.TIME_SLOTS[index].setEvent(event);
+        this.addEventBySlotnumber(event, index);
     }
 
     public void addEventBySlotnumber(Event event, int slotnumber){

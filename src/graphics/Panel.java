@@ -70,6 +70,10 @@ public class Panel extends JPanel {
     void addImage(BufferedImage img, int day, int timeSlot) {
         this.imageSlots[day * slotCount + timeSlot] = img;
     }
+    
+    void addImage(BufferedImage img, int slotNumber) {
+        this.imageSlots[slotNumber] = img;
+    }
 
     void removeImage(int day, int timeSlot) {
         this.imageSlots[day * slotCount + timeSlot] = emptyImage;

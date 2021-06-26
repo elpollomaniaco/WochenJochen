@@ -39,13 +39,19 @@ public class Controller {
 
     public void addEventBySpotnumber(int id, int spot){
         Event event = new Event(id);
-        this.week.addEventBySlotnumber(event, spot);
+        this.createEvent(event, spot);
     }
 
     private void createEvent(Event event, float x, float y) {
         int day = (int)(this.week.getDayCount() * x);
         int timeSlot = (int)(this.week.getSlotCount() * y);
-        this.week.addEvent(event, day, timeSlot);
+        this.createEvent(event, (day * this.week.getSlotCount() + timeSlot));
+    }
+    
+    //main creation
+    private void createEvent(Event event, int slotNumber) {
+    	drawer.addImage(event.getImage(), slotNumber);
+    	this.week.addEventBySlotnumber(event, slotNumber);
     }
 
     public void updateEvent(int id, float x, float y) {

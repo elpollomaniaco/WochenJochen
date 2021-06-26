@@ -25,6 +25,10 @@ public class Drawer {
     public void addImage(BufferedImage img, int day, int timeSlot) {
         this.panel.addImage(img, day, timeSlot);
     }
+    
+    public void addImage(BufferedImage img, int slotNumber) {
+    	this.panel.addImage(img, slotNumber);
+    }
 
 
 }
