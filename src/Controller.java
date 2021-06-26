@@ -27,6 +27,7 @@ public class Controller {
         this.week = new Week(dayCount, slotCount, startTime, endTime);
     }
 
+    //Add event from Klotz
     public void addEvent(int id, float x, float y) {
         //Create new Event
         Event newEvent = new Event(id);
@@ -42,33 +43,36 @@ public class Controller {
                 //Remove old Event
                 this.removeEvent(id, x, y);
                 //Add new Event
-                this.createEvent(newEvent, x, y);
+                this.createEvent(newEvent, x, y, false);
             }
         }
         else {
-            this.createEvent(newEvent, x, y);
+            this.createEvent(newEvent, x, y, false);
         }
     }
 
+    //Add event from server
     public void addEvent(int id, Category cat, float x, float y) {
         Event event = new Event(id, cat);
-        this.createEvent(event, x, y);
+        this.createEvent(event, x, y, true);
     }
 
     public void addEventBySpotnumber(int id, int spot){
         Event event = new Event(id);
-        this.createEvent(event, spot);
+        this.createEvent(event, spot, true);
     }
 
-    private void createEvent(Event event, float x, float y) {
+    private void createEvent(Event event, float x, float y, boolean fromServer) {
         int day = this.getDay(x,y);
         int timeSlot = this.getSlot(y);
-        this.createEvent(event, (day * this.week.getSlotCount() + timeSlot));
+        this.createEvent(event, (day * this.week.getSlotCount() + timeSlot), fromServer);
     }
     
     //main creation
-    private void createEvent(Event event, int slotNumber) {
-    	drawer.addImage(event.getImage(), slotNumber);
+    private void createEvent(Event event, int slotNumber, boolean fromServer) {
+    	if(fromServer) {
+    		drawer.addImage(event.getImage(), slotNumber);
+    	}
     	this.week.addEventBySlotnumber(event, slotNumber);
     }
 
