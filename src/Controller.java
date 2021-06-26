@@ -51,7 +51,7 @@ public class Controller {
         }
     }
 
-    //Aktuell nicht in Verwendung
+    //Aktuell nicht in Verwendung.
     public void addEvent(int id, Category cat, float x, float y) {
         Event event = new Event(id, cat);
         this.createEvent(event, x, y);
@@ -84,8 +84,8 @@ public class Controller {
 
     public void removeEvent(int id, float x, float y) {
         if (x >= 0) {
-	    	int day = (int)(this.week.getDayCount() * x);
-	        int timeSlot = (int)(this.week.getSlotCount() * y);
+	    	int day = getDay(x, y);
+	        int timeSlot = getSlot(y);
 	        drawer.removeImage(day, timeSlot);
         }
         this.week.removeEvent(id);
@@ -125,7 +125,7 @@ public class Controller {
     
     private int getDay(float x, float y) {
     	
-    	if (y < 0.34) {
+    	if (y < 0.46) {
     		if (x < 0.3) {
 	    		return 0;
 	    	} else if (x < 0.38) {

@@ -11,8 +11,10 @@ public class Drawer {
 
         EventQueue.invokeLater(() -> {
             Frame frame = new Frame(panel, title, x, y);
-            frame.setVisible(true);
+            frame.setVisible(true);            
         });
+        
+        panel.setBackground(Color.black);
 
         refreshDrawing();
     }

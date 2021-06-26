@@ -9,7 +9,7 @@ public class Panel extends JPanel {
     Graphics2D g2d;
     int maxX, maxY, dayCount, slotCount;
     int x00 = 250, x01 = 1200, x10 = 150, x11 = 1400, y0 = 80, y1 = 780;
-    int imgOffsetX = -40;
+    int imgOffsetX = -60;
     int imgOffsetY = -20;
     BufferedImage[] imageSlots;
     BufferedImage emptyImage = null;
@@ -48,7 +48,7 @@ public class Panel extends JPanel {
         		
             	for( int i = 0; i < dayCount; i++) {
                     img = this.imageSlots[i * slotCount + j];
-                    g2d.drawRect((int) curX, (int)curY, 10, 10);
+                    //g2d.drawRect((int) curX, (int)curY, 10, 10);
                     
                     if (img != null) {
                     g2d.drawImage(img, (int)curX + imgOffsetX, (int)curY + imgOffsetY, 40, 40, null);
