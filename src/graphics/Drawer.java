@@ -30,6 +30,8 @@ public class Drawer {
     	this.panel.addImage(img, slotNumber);
     }
 
-    public void removeImage(int day, int timeSlot) { this.panel.removeImage(day, timeSlot);}
+    public void removeImage(int day, int timeSlot) { 
+    	this.panel.removeImage(day, timeSlot);
+    }
 }
 

@@ -40,7 +40,7 @@ public class Controller {
             Event currentEvent = week.getEvent(slot);
             if (currentEvent.getCategory().equals(newEvent.getCategory())){
                 //Remove old Event
-                this.removeEvent(id);
+                this.removeEvent(id, x, y);
                 //Add new Event
                 this.createEvent(newEvent, x, y);
             }
@@ -78,9 +78,11 @@ public class Controller {
     }
 
     public void removeEvent(int id, float x, float y) {
-        int day = (int)(this.week.getDayCount() * x);
-        int timeSlot = (int)(this.week.getSlotCount() * y);
-        drawer.removeImage(day, timeSlot);
+        if (x >= 0) {
+	    	int day = (int)(this.week.getDayCount() * x);
+	        int timeSlot = (int)(this.week.getSlotCount() * y);
+	        drawer.removeImage(day, timeSlot);
+        }
         this.week.removeEvent(id);
     }
 
