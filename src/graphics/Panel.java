@@ -82,6 +82,6 @@ public class Panel extends JPanel {
 
     void removeImage(int day, int timeSlot) {
         this.imageSlots[day * slotCount + timeSlot] = emptyImage;
-        System.out.println("PanelRemoveImage");
+        System.out.println("PanelRemoveImage d:" + day + " slot:" + timeSlot);
     }
 }

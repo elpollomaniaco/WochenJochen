@@ -43,29 +43,30 @@ public class Controller {
                 //Remove old Event
                 this.removeEvent(id, x, y);
                 //Add new Event
-                this.createEvent(newEvent, x, y, false);
+                this.createEvent(newEvent, x, y);
             }
         }
         else {
-            this.createEvent(newEvent, x, y, false);
+            this.createEvent(newEvent, x, y);
         }
     }
 
-    //Add event from server
+    //Aktuell nicht in Verwendung
     public void addEvent(int id, Category cat, float x, float y) {
         Event event = new Event(id, cat);
-        this.createEvent(event, x, y, true);
+        this.createEvent(event, x, y);
     }
-
+    
+    //Add event from server
     public void addEventBySpotnumber(int id, int spot){
         Event event = new Event(id);
         this.createEvent(event, spot, true);
     }
 
-    private void createEvent(Event event, float x, float y, boolean fromServer) {
+    private void createEvent(Event event, float x, float y) {
         int day = this.getDay(x,y);
         int timeSlot = this.getSlot(y);
-        this.createEvent(event, (day * this.week.getSlotCount() + timeSlot), fromServer);
+        this.createEvent(event, (day * this.week.getSlotCount() + timeSlot), false);
     }
     
     //main creation
