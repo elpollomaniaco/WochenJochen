@@ -10,6 +10,7 @@ public class Listener implements TuioListener {
     @Override
     // new object enters sight of cam
     public void addTuioObject(TuioObject tobj) {
+    	// bool draw (wenn vom listener, dann nicht zeichnen, wenn vom server, dann draw)
         this.controller.addEvent(tobj.getSymbolID(), tobj.getX(), tobj.getY());
     }
 
