@@ -23,7 +23,7 @@ public class Listener implements TuioListener {
     @Override
     // object leaves sight of cam
     public void removeTuioObject(TuioObject tobj) {
-        this.controller.removeEvent(tobj.getSymbolID());
+        this.controller.removeEvent(tobj.getSymbolID(),-1,-1);
     }
 
     @Override

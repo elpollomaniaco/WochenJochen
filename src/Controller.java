@@ -73,11 +73,14 @@ public class Controller {
     }
 
     public void updateEvent(int id, float x, float y) {
-        this.removeEvent(id);
+        this.removeEvent(id, x, y);
         this.addEvent(id, x, y);
     }
 
-    public void removeEvent(int id) {
+    public void removeEvent(int id, float x, float y) {
+        int day = (int)(this.week.getDayCount() * x);
+        int timeSlot = (int)(this.week.getSlotCount() * y);
+        drawer.removeImage(day, timeSlot);
         this.week.removeEvent(id);
     }
 
