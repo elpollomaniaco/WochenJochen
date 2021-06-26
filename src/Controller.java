@@ -28,8 +28,26 @@ public class Controller {
     }
 
     public void addEvent(int id, float x, float y) {
-        Event event = new Event(id);
-        this.createEvent(event, x, y);
+        //Create new Event
+        Event newEvent = new Event(id);
+
+        int day = (int)(this.week.getDayCount() * x);
+        int timeSlot = (int)(this.week.getSlotCount() * y);
+        int slot = day * this.week.getSlotCount() + timeSlot;
+        //Check if the slot is already occupied
+        if (week.spotOccupied(slot)){
+            //Check whether the Categories match
+            Event currentEvent = week.getEvent(slot);
+            if (currentEvent.getCategory().equals(newEvent.getCategory())){
+                //Remove old Event
+                this.removeEvent(id);
+                //Add new Event
+                this.createEvent(newEvent, x, y);
+            }
+        }
+        else {
+            this.createEvent(newEvent, x, y);
+        }
     }
 
     public void addEvent(int id, Category cat, float x, float y) {

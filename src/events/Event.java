@@ -31,4 +31,8 @@ public class Event {
     public BufferedImage getImage() {
         return this.CATEGORY.getImage();
     }
+
+    public Category getCategory(){
+        return this.CATEGORY;
+    }
 }

@@ -44,7 +44,13 @@ public class MockServer {
         //Search a free spot
         Week week = controller.getWeek();
         int spot = week.freeSpot();
-        controller.addEventBySpotnumber(id, spot);
+        if (spot >= 0) {
+            controller.addEventBySpotnumber(id, spot);
+        }
+        else
+        {
+            System.out.println("Sorry du bist zu busy");
+        }
 
 
     }

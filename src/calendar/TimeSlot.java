@@ -1,5 +1,6 @@
 package calendar;
 
+import events.Category;
 import events.Event;
 
 public class TimeSlot {
@@ -22,4 +23,6 @@ public class TimeSlot {
     }
 
     public boolean hasEvent() {return (this.event != null);}
+
+    public Event getEvent(){ return this.event; }
 }

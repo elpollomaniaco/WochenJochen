@@ -1,5 +1,6 @@
 package calendar;
 
+import events.Category;
 import events.Event;
 
 import java.util.*;
@@ -102,11 +103,23 @@ public class Week {
     public int freeSpot(){
         Random r = new Random();
         int check = r.nextInt(TIME_SLOTS.length);
+        int counter = 0;
         while (TIME_SLOTS[check].hasEvent()){
+            counter ++;
             check = r.nextInt(TIME_SLOTS.length);
+            if (counter > TIME_SLOTS.length) { return -1;}
         }
         return check;
     }
+
+    public boolean spotOccupied(int spot){
+        return TIME_SLOTS[spot].hasEvent();
+    }
+
+    public Event getEvent(int spot){
+        return this.TIME_SLOTS[spot].getEvent();
+    }
+
 
     public int getDayCount() {
         return this.DAY_COUNT;
